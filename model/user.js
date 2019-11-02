@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 var userSchema = new mongoose.Schema({
 	username: { type: String, unique: true},
 	email: {type: String, unique: true},
-	password: { type: String}
+	password: { type: String},
+	role: { type: String}
 });
 
 /* Map with Object into DB table */

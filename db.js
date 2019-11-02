@@ -4,6 +4,7 @@ mongoose.connect('mongodb://localhost:27017/flipkart');
 
 mongoose.connection.on('connected', function() {
 	console.log('DB connection successful');
+	
 });
 
 mongoose.connection.on('error', function() {

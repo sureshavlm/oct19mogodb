@@ -1,6 +1,6 @@
-var express = require('express');
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
+var express = require('express'); //MVC framework
+var mongoose = require('mongoose'); //DB connection
+var bodyParser = require('body-parser'); //parsing request body
 
 var db = require('./db');
 var User = require('./model/user');
@@ -15,6 +15,7 @@ app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/register.html');
 });
 
+
 /* http://localhost:3000/users */
 app.get('/users', function(req, res) {
 	User.find(function(err, results) {
@@ -24,15 +25,15 @@ app.get('/users', function(req, res) {
 
 app.post('/register', function(req, res) {
 
-	console.log(req.body);
-	var userModel = new User();
+	var userModel = new User(); //ORM 
 	userModel.username = req.body.username;
 	userModel.email = req.body.email;
 	userModel.password = req.body.password;
+	userModel.role = req.body.role;
 
 	userModel.save(function(err, data) {
 		if(err)
-			console.log('Error while inserting data into user table', error);
+			console.log('Error while inserting data into user table', err);
 		else if(data == null){
 			console.log('No data returned from users table');
 		}
